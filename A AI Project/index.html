@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Wilds | Cinematic Experience</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 1. The Audio Element -->
+  <audio id="bg-audio" loop src="JungleTheme.mp3"></audio>
+
+  <!-- 2. Cinematic Audio Activation Gate -->
+  <div id="audio-gate" class="audio-gate">
+    <div class="gate-content">
+      <span class="gate-subtitle">HEADPHONES RECOMMENDED</span>
+      <h2 class="gate-title">ENTER THE WILDS</h2>
+      <button class="enter-btn" onclick="activateExperience()">
+        <span class="btn-text">INITIALIZE EXPERIENCE</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Background Ambient Glow -->
+  <div class="ambient-glow"></div>
+
+  <!-- Hero Section (Documentary Style Entrance) -->
+  <header class="hero-section">
+    <div class="hero-media-wrapper">
+      <!-- High-definition placeholder representing cinematic wildlife landscape -->
+      <img src="background.jpg" alt="Majestic Lion" class="hero-bg-img">
+      <div class="video-overlay"></div>
+    </div>
+    
+    <div class="hero-content">
+      <h1 class="cinematic-title">APEX</h1>
+      <p class="cinematic-subtitle">Experience the wild in ultra-high definition</p>
+    </div>
+    
+    <div class="scroll-indicator">
+      <span class="mouse-wheel"></span>
+      <p>Scroll to Explore</p>
+    </div>
+  </header>
+
+  <!-- Interactive 3D Animal Exhibition Split Section -->
+  <main class="showcase-container">
+    
+    <!-- Animal Card 1: The Apex Predator -->
+    <section class="animal-card-wrapper">
+      <div class="animal-card">
+        <div class="card-image-box">
+          <img src="tiger.jpg" alt="Bengal Tiger" class="animal-img">
+        </div>
+        <div class="card-info">
+          <span class="animal-tag">Panthera tigris</span>
+          <h2 class="animal-name">THE TIGER</h2>
+          <p class="animal-desc">Witness absolute power moving through the deep shadows of the jungle canopy with silent, calculated precision.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animal Card 2: The Silent Hunter -->
+    <section class="animal-card-wrapper invert">
+      <div class="animal-card">
+        <div class="card-image-box">
+          <img src="wolf.jpg" alt="Grey Wolf" class="animal-img">
+        </div>
+        <div class="card-info">
+          <span class="animal-tag">Canis lupus</span>
+          <h2 class="animal-name">THE WOLF</h2>
+          <p class="animal-desc">A masterpiece of endurance and tactical intelligence, navigating the frozen expanses under the cover of night.</p>
+        </div>
+      </div>
+    </section>
+    <!-- Animal Card 3: The Ocean Sovereign -->
+    <section class="animal-card-wrapper">
+      <div class="animal-card">
+        <div class="card-image-box">
+          <img src="shark.jpg" alt="Great White Shark" class="animal-img">
+        </div>
+        <div class="card-info">
+          <span class="animal-tag">Carcharodon carcharias</span>
+          <h2 class="animal-name">THE SHARK</h2>
+          <p class="animal-desc">An ancient engineering marvel of the deep seas, tracking its targets across vast oceanic horizons through pure bio-electric detection.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Animal Card 4: The High-Altitude Ghost -->
+    <section class="animal-card-wrapper invert">
+      <div class="animal-card">
+        <div class="card-image-box">
+          <img src="leopard.jpg" alt="Snow Leopard" class="animal-img">
+        </div>
+        <div class="card-info">
+          <span class="animal-tag">Panthera uncia</span>
+          <h2 class="animal-name">THE LEOPARD</h2>
+          <p class="animal-desc">A master of near-impossible vertical terrains, melting seamlessly into the jagged stones and high snowstorms of the rugged mountain peaks.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animal Card 5: The Shadow Stalker -->
+    <section class="animal-card-wrapper">
+      <div class="animal-card">
+        <div class="card-image-box">
+          <img src="panther.jpg" alt="Black Panther" class="animal-img">
+        </div>
+        <div class="card-info">
+          <span class="animal-tag">Panthera pardus</span>
+          <h2 class="animal-name">THE PANTHER</h2>
+          <p class="animal-desc">A phantom of midnight darkness, utilizing absolute camouflage to ambush targets before they ever realize the darkness itself is moving.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Animal Card 6: The Monarch of the Skies -->
+    <section class="animal-card-wrapper invert">
+      <div class="animal-card">
+        <div class="card-image-box">
+          <img src="eagle.jpg" alt="Golden Eagle" class="animal-img">
+        </div>
+        <div class="card-info">
+          <span class="animal-tag">Aquila chrysaetos</span>
+          <h2 class="animal-name">THE EAGLE</h2>
+          <p class="animal-desc">Commanding the upper atmospheres with unparalleled visual clarity, striking from miles above with terrifying, gravity-fueled velocity.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animal Card 7: The Savannah Overlord -->
+    <section class="animal-card-wrapper">
+      <div class="animal-card">
+        <div class="card-image-box">
+          <img src="lion.jpg" alt="African Lion" class="animal-img">
+        </div>
+        <div class="card-info">
+          <span class="animal-tag">Panthera leo</span>
+          <h2 class="animal-name">THE LION</h2>
+          <p class="animal-desc">The ultimate symbol of raw authority, orchestrating complex group tactics to govern the vast, sun-drenched plains of the Serengeti.</p>
+        </div>
+      </div>
+    </section>
+
+    </section>
+
+    <!-- Animal Card 8: The Glacial Titan -->
+    <section class="animal-card-wrapper invert">
+      <div class="animal-card">
+        <div class="card-image-box">
+          <img src="bear.jpg" alt="Polar Bear" class="animal-img">
+        </div>
+        <div class="card-info">
+          <span class="animal-tag">Ursus maritimus</span>
+          <h2 class="animal-name">THE BEAR</h2>
+          <p class="animal-desc">An unmatched force of physical resilience, ruling the crumbling arctic ice shelfs where survival requires absolute adaptation.</p>
+        </div>
+      </div>
+    </section>
+
+
+    
+
+  </main>
+
+  <!-- Deep Forest Parallax Text Masking Section -->
+  <section class="text-mask-section">
+    <div class="mask-background"></div>
+    <div class="mask-text-wrapper">
+      <h2 class="glowing-mask-text">WILDERNESS</h2>
+    </div>
+  </section>
+
+  <!-- Footer / Creator Mark -->
+  <footer class="creator-footer">
+    <p>Designed with absolute precision</p>
+    <div class="creator-badge">
+      Created by <span class="glowing-name">DHAIRYASHIL AND AI</span>
+    </div>
+  </footer>
+
+  <script>
+    function activateExperience() {
+      const audio = document.getElementById('bg-audio');
+      const gate = document.getElementById('audio-gate');
+      
+      // 1. Play the high-fidelity sound
+      audio.volume = 0.5; // Sets volume to 50%
+      audio.play();
+      
+      // 2. Smoothly fade out the introduction screen
+      gate.classList.add('fade-out');
+    }
+  </script>
+</body>
+</html>
