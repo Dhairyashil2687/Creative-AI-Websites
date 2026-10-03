@@ -48,5 +48,12 @@ const SoundEngine = {
 
     triggerClick() {
         this.play(1200, 0.03, 'square', 0.15);
+    },
+
+    // NEW SCARY HORROR DRONE EFFECT
+    triggerHorrorDrone() {
+        this.play(50, 6.0, 'sawtooth', 0.6); // Deep mechanical sub-bass
+        this.play(55, 6.0, 'sawtooth', 0.5); // Dissonant vibrating pulse
+        this.play(950, 6.0, 'sine', 0.12);   // Piercing hospital flatline tone
     }
 };
