@@ -44,19 +44,17 @@ UI.btnInitialize.addEventListener('click', () => {
     SoundEngine.init();
     SoundEngine.triggerClick();
     
-    // Request Native Fullscreen mode across all standard browsers
     const docEl = document.documentElement;
     if (docEl.requestFullscreen) {
         docEl.requestFullscreen();
-    } else if (docEl.mozRequestFullScreen) { /* Firefox */
+    } else if (docEl.mozRequestFullScreen) {
         docEl.mozRequestFullScreen();
-    } else if (docEl.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+    } else if (docEl.webkitRequestFullscreen) {
         docEl.webkitRequestFullscreen();
-    } else if (docEl.msRequestFullscreen) { /* IE/Edge */
+    } else if (docEl.msRequestFullscreen) {
         docEl.msRequestFullscreen();
     }
 
-    // Hide the boot overlay smoothly
     UI.bootScreen.style.opacity = "0";
     setTimeout(() => {
         UI.bootScreen.style.display = "none";
@@ -105,11 +103,9 @@ UI.input.addEventListener('keydown', (e) => {
     }
 });
 
-// Fallback listener for Mobile Text input environments
 UI.input.addEventListener('input', (e) => {
-    // If the value changed but didn't come from desktop keydown intercept
     if(e.inputType === "insertText" && e.data) {
-        UI.input.value = UI.input.value.slice(0, -1); // Remove raw character
+        UI.input.value = UI.input.value.slice(0, -1);
         handleVirtualTyping(e.data);
     }
 });
@@ -124,6 +120,10 @@ UI.btnSubmitName.addEventListener('click', () => {
 
 // --- STAGE 2: INQUISITION MATRIX ENGINE ---
 function transitionToStage2() {
+    if (document.activeElement) {
+        document.activeElement.blur();
+    }
+
     triggerVisualGlitch(300);
     SoundEngine.triggerSubDrop();
 
@@ -144,7 +144,7 @@ function runTerminalSequence(index) {
     const logRow = document.createElement('div');
     logRow.innerText = `[>] ${terminalScripts[index]}`;
     UI.terminalLogs.appendChild(logRow);
-    UI.terminalLogs.scrollTop = UI.terminalLogs.scrollHeight; // Auto scroll down terminal
+    UI.terminalLogs.scrollTop = UI.terminalLogs.scrollHeight;
     
     const progressPercent = ((index + 1) / terminalScripts.length) * 100;
     UI.corruptionFill.style.width = `${progressPercent}%`;
@@ -174,7 +174,6 @@ function renderInterrogationChallenge() {
     function jumpEscapeButton(e) {
         SoundEngine.play(90, 0.2, 'sawtooth', 0.4);
         refuseBtn.style.position = 'absolute';
-        // Keeps the button jumping strictly bounded inside its matrix safely on screens
         refuseBtn.style.left = `${Math.random() * 60}%`;
         refuseBtn.style.top = `${Math.random() * 60}%`;
         
@@ -183,7 +182,6 @@ function renderInterrogationChallenge() {
         }
     }
 
-    // Triggers escaping for both mouse-hover (Desktop) and direct touch taps (Mobile)
     refuseBtn.addEventListener('mouseover', jumpEscapeButton);
     refuseBtn.addEventListener('touchstart', (e) => {
         e.preventDefault(); 
@@ -213,7 +211,6 @@ function transitionToStage3() {
         }
     }, 2600);
 
-    // Final Impact Sequence
     setTimeout(() => {
         UI.spike.style.animation = "spike-strike 0.35s forwards cubic-bezier(0.6, -0.28, 0.735, 0.045)";
         
@@ -272,25 +269,24 @@ function dumpFakeSystemLogs() {
             if(i === lines.length - 1) {
                 setTimeout(() => {
                     UI.bsod.classList.remove('hidden');
-                    SoundEngine.play(150, 4.0, 'sawtooth', 0.6);
-}, 1500);
+                    // TRIGGERS NEW SCARY HORROR DRONE INSTEAD OF OLD BUZZ SOUND
+                    SoundEngine.triggerHorrorDrone();
+                }, 1500);
+            }
+        }, i * 400);
+    });
 }
-}, i * 400);
-});
-}
-// Judges Mobile Exit Hatch: Tapping the screen breaks out of full-screen and resets the page
+
+// Exit Hatch: Tapping the screen breaks out of full-screen and resets the page
 UI.bsod.addEventListener('click', () => {
-    // Release native mobile fullscreen mode safely
     if (document.exitFullscreen) {
         document.exitFullscreen().catch(() => {});
-    } else if (document.webkitExitFullscreen) { /* Safari / iOS compatibility */
-        document.webkitExitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-    }
-    
-    // Smoothly reload the browser back to the initial state
-    setTimeout(() => {
-        window.location.reload();
-    }, 300);
+    } else if (document.webkitExitFullscreen) {
+document.webkitExitFullscreen();
+} else if (document.mozCancelFullScreen) {
+document.mozCancelFullScreen();
+}
+setTimeout(() => {
+window.location.reload();
+}, 300);
 });
