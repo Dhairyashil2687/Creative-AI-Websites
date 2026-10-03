@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dhairya's Horrific Dimension</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Cinematic Boot/Full-Screen Trigger Overlay -->
+    <div id="boot-screen" class="boot-overlay">
+        <div class="boot-box">
+            <div class="security-ticker">SYSTEM BOOT // PROTOCOL 0x99X</div>
+            <p>CRITICAL CORRUPTION DETECTED IN CAMPUS REGISTRY.</p>
+            <button id="btn-initialize" class="horror-btn initialization-btn">INITIALIZE CORE INTERFACE</button>
+        </div>
+    </div>
+
+    <div class="static-overlay"></div>
+    <div class="vignette"></div>
+    
+    <!-- Emergency Fake Error Screen -->
+    <div id="blue-screen" class="bsod hidden">
+        <div>A fatal exception 0x80040E14 has occurred. Your college registry data cluster is corrupt.</div>
+        <!-- Updated text for mobile tap visibility -->
+        <p class="bsod-subtext">TAP ANYWHERE TO REBOOT SYSTEM...</p>
+    </div>
+
+
+    <div id="universe">
+        <!-- STAGE 1: PORTAL INTEGRATION -->
+        <div id="stage-portal" class="dimension active">
+            <h1 class="tagline">Dhairya's Horrific Dimension</h1>
+            <div class="task-box">
+                <div class="security-ticker">SECURE NODE // IDENTITY CONTRACT INITIALIZATION</div>
+                <p>Provide your official registry name to check current academic standing status. Unauthorized terminals will be traced.</p>
+                <!-- Added inputmode="text" to ensure native keyboards display fine on mobile -->
+                <input type="text" id="horror-input" class="dark-input" placeholder="ENTER NAME / TAP TO TYPE..." autocomplete="off" inputmode="text">
+                <div id="warning-log" class="warning-text">SYSTEM STANDBY...</div>
+                <!-- Action Button for Mobile Users who don't have an 'Enter' key easily visible -->
+                <button id="btn-submit-name" class="horror-btn mobile-action-btn">SUBMIT IDENTITY</button>
+            </div>
+        </div>
+
+        <!-- STAGE 2: THE ACADEMIC INQUISITION -->
+        <div id="stage-inquisition" class="dimension">
+            <h1 class="tagline">COMPROMISED SEGMENT</h1>
+            <div class="task-box">
+                <div id="terminal-screen" class="terminal-box">
+                    <div>[CRITICAL] SYSTEM OVERRIDE BY DHAIRYA</div>
+                    <div class="progress-bar"><div id="corruption-fill" class="progress-fill"></div></div>
+                    <div id="terminal-logs"></div>
+                </div>
+                <p style="margin-top:15px; font-size:0.85rem;">Task: A verification prompt has been generated below. Resolve it or accept immediate database deletion.</p>
+                <div id="interrogation-zone"></div>
+            </div>
+        </div>
+
+        <!-- STAGE 3: THE CRUCIFIXION SACRIFICE -->
+        <div id="stage-execution" class="dimension">
+            <h1 class="tagline">TERMINATION LOGIC</h1>
+            <div class="doll-theater">
+                <div class="spike" id="execution-spike"></div>
+                <div class="blood-splatter" id="blood"></div>
+                <div class="voodoo-doll" id="victim-doll">
+                    <div class="doll-name" id="target-label">TARGET</div>
+                </div>
+            </div>
+            <div class="task-box" style="text-align: center;">
+                <p id="execution-status" class="status-alert"></p>
+                <div class="terminal-box" id="final-dump" style="height:100px; font-size:0.75rem; text-align:left;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modular Script Injections -->
+    <script src="audio.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

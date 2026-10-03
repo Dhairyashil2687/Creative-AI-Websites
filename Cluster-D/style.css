@@ -1,0 +1,216 @@
+:root {
+    --void-color: #020202;
+    --corrupted-red: #bb0000;
+    --terminal-green: #00ff33;
+    --warning-yellow: #ffcc00;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    cursor: crosshair;
+    -webkit-tap-highlight-color: transparent; /* Clean mobile selection styling */
+}
+
+body {
+    background-color: var(--void-color);
+    color: #dcdcdc;
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    perspective: 1500px;
+}
+
+/* Force Fullscreen Bootstrap Layout Layer */
+.boot-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: #000;
+    z-index: 99999;
+    display: flex; justify-content: center; align-items: center;
+    padding: 20px;
+    transition: opacity 0.5s ease;
+}
+.boot-box {
+    background: #050505;
+    border: 1px dashed var(--corrupted-red);
+    padding: 30px; max-width: 500px; width: 100%;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(187,0,0,0.2);
+}
+.initialization-btn {
+    margin-top: 25px;
+    border: 1px solid var(--terminal-green) !important;
+    color: var(--terminal-green) !important;
+}
+.initialization-btn:hover {
+    background: var(--terminal-green) !important;
+    color: #000 !important;
+    box-shadow: 0 0 15px var(--terminal-green) !important;
+}
+
+/* Base Overlays */
+.static-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25) 1px, transparent 1px, transparent 3px);
+    pointer-events: none; z-index: 999;
+}
+
+.vignette {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    box-shadow: inset 0 0 120px rgba(0,0,0,0.95);
+    pointer-events: none; z-index: 998;
+    animation: pulse-vignette 5s infinite alternate;
+}
+
+/* 3D Space Matrices */
+#universe {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.dimension {
+    position: absolute;
+    width: 100vw; height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 15px;
+    backface-visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.dimension.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#stage-portal { transform: translateZ(0px); }
+#stage-inquisition { transform: rotateX(180deg) translateZ(0px); }
+#stage-execution { transform: rotateY(180deg) translateZ(0px); background: #060000; }
+
+/* Structural Components */
+.tagline {
+    font-size: 2.2rem; text-transform: uppercase; letter-spacing: 4px; color: #fff; text-align: center;
+    text-shadow: 3px 0px 0px var(--corrupted-red), -3px 0px 0px rgba(0,255,255,0.5);
+    animation: main-glitch 1.5s infinite linear alternate-reverse;
+    margin-bottom: 25px; user-select: none;
+    width: 100%;
+}
+
+.task-box {
+    background: rgba(5, 5, 5, 0.98);
+    border: 1px solid #222;
+    border-left: 4px solid var(--corrupted-red);
+    padding: 30px; max-width: 650px; width: 100%;
+    box-shadow: 0 0 40px rgba(0,0,0,0.95);
+    position: relative;
+}
+
+.security-ticker {
+    font-size: 0.75rem; color: var(--corrupted-red); margin-bottom: 15px; letter-spacing: 2px;
+}
+
+.dark-input {
+    width: 100%; background: #000; border: 1px solid #333; color: var(--terminal-green);
+    padding: 15px; font-family: inherit; font-size: 1.1rem; outline: none; letter-spacing: 2px;
+    text-shadow: 0 0 4px var(--terminal-green);
+    border-radius: 0px;
+}
+
+.warning-text { color: var(--warning-yellow); font-size: 0.85rem; margin-top: 12px; min-height: 20px; text-transform: uppercase; word-break: break-word;}
+
+/* Terminal Framework */
+.terminal-box {
+    width: 100%; height: 160px; background: #000; border: 1px solid #222; padding: 12px;
+    overflow-y: auto; font-size: 0.85rem; color: var(--terminal-green); line-height: 1.4;
+}
+
+/* Custom minimal scrollbar to keep it creepy */
+.terminal-box::-webkit-scrollbar { width: 4px; }
+.terminal-box::-webkit-scrollbar-thumb { background: #222; }
+
+.progress-bar { width: 100%; height: 6px; background: #111; margin: 10px 0; border: 1px solid #333; }
+.progress-fill { width: 0%; height: 100%; background: var(--corrupted-red); transition: width 0.1s linear; }
+
+.horror-btn {
+    background: transparent; border: 1px solid var(--corrupted-red); color: #fff;
+    padding: 12px 24px; font-family: inherit; width: 100%; text-transform: uppercase;
+    letter-spacing: 2px; margin-top: 15px; transition: 0.2s;
+    border-radius: 0px;
+}
+.horror-btn:hover { background: var(--corrupted-red); box-shadow: 0 0 15px var(--corrupted-red); }
+
+.escape-btn-style {
+    border-color: #333; color: #555;
+}
+
+/* Voodoo Assembly Theater */
+.doll-theater {
+    width: 280px; height: 300px; border: 2px solid #1a1a1a; background: #000;
+    position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center;
+    margin-bottom: 25px; box-shadow: inset 0 0 60px rgba(187, 0, 0, 0.4);
+}
+
+.voodoo-doll {
+    width: 75px; height: 140px; background: #3d3731; border-radius: 40px 40px 15px 15px;
+    position: relative; display: flex; justify-content: center; align-items: center;
+    margin-top: 40px;
+}
+.voodoo-doll::before {
+    content: ''; position: absolute; top: -45px; width: 65px; height: 65px;
+    background: #3d3731; border-radius: 50%; border-bottom: 4px solid #24201c;
+}
+
+.doll-name {
+    position: absolute; top: -15px; color: #fff; font-size: 0.75rem;
+    background: #000; padding: 2px 8px; border: 1px solid var(--corrupted-red);
+    white-space: nowrap; z-index: 10; letter-spacing: 1px;
+}
+
+.spike { position: absolute; width: 10px; height: 140px; background: linear-gradient(#888, #222); top: -160px; z-index: 5; }
+.blood-splatter { position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, var(--corrupted-red) 20%, transparent 70%); opacity: 0; z-index: 6; }
+.status-alert { color: var(--corrupted-red); font-weight: bold; min-height: 25px; text-transform: uppercase; margin-bottom: 10px; font-size:0.9rem;}
+
+/* System Distortions */
+.manifestation { position: fixed; color: var(--corrupted-red); font-weight: bold; pointer-events: none; z-index: 1000; font-size: 1.1rem; text-shadow: 0 0 4px #000; white-space: nowrap; }
+.glitch-active { animation: screen-shake 0.08s infinite; filter: invert(1) contrast(250%) hue-rotate(90deg); }
+
+.bsod {
+    position: fixed; top:0; left:0; width:100vw; height:100vh; background:#0000aa; color:#fff;
+    padding:40px 20px; font-family:monospace; font-size:1.1rem; z-index:10000; line-height:1.6;
+    box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+}
+.bsod-subtext { margin-top: 30px; font-size: 0.9rem; color: #aaaaaa; }
+.hidden { display: none !important; }
+
+/* --- MOBILE STRUCTURAL OPTIMIZATION BREAKPOINTS --- */
+@media (max-width: 768px) {
+    .tagline { font-size: 1.4rem; letter-spacing: 2px; margin-bottom: 15px; }
+    .task-box { padding: 20px 15px; }
+    .dark-input { font-size: 0.9rem; padding: 12px; }
+    .terminal-box { height: 130px; font-size: 0.75rem; }
+    .doll-theater { width: 220px; height: 240px; }
+    .voodoo-doll { width: 60px; height: 110px; margin-top: 30px;}
+    .voodoo-doll::before { width: 50px; height: 50px; top: -35px; }
+    .spike { height: 110px; }
+    .bsod { font-size: 0.9rem; padding: 15px; }
+}
+
+@media (min-width: 769px) {
+    .mobile-action-btn { display: none; } /* Hide mobile button layout rules on larger displays */
+}
+
+/* Animation Keyframes */
+@keyframes pulse-vignette { 0% { box-shadow: inset 0 0 100px rgba(0,0,0,0.95); } 100% { box-shadow: inset 0 0 140px rgba(187,0,0,0.45); } }
+@keyframes main-glitch { 0% { text-shadow: 2px 0px 0px var(--corrupted-red), -2px 0px 0px rgba(0,255,255,0.5); } 50% { text-shadow: -4px 0px 0px var(--corrupted-red), 4px 0px 0px rgba(0,255,255,0.5); transform: skew(-1deg); } 100% { text-shadow: 3px 0px 0px var(--corrupted-red), -1px 0px 0px rgba(0,255,255,0.5); } }
+@keyframes screen-shake { 0% { transform: translate(4px, 2px) rotate(0.5deg); } 50% { transform: translate(-4px, -2px) rotate(-0.5deg); } 100% { transform: translate(2px, -4px); } }
+@keyframes spike-strike { 0% { top: -160px; } 30% { top: 60px; } 100% { top: 60px; } }
+@keyframes doll-destroy { 0% { transform: scale(1); } 20% { transform: scale(1.15) rotate(10deg); background:#1e0000; } 100% { transform: scale(0.1) translateY(100px) rotate(-60deg); opacity: 0; } }
